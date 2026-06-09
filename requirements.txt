@@ -1,0 +1,9 @@
+pygame>=2.5
+vgamepad>=0.1.0
+keyboard>=0.13.5
+vosk>=0.3.45
+sounddevice>=0.4.6
+# Hybrid number recognition (optional but recommended; set WHISPER_NUMBERS).
+# Vosk handles instant commands; faster-whisper transcribes "set <number>".
+faster-whisper>=1.0.0
+numpy>=1.24
