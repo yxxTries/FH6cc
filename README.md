@@ -89,17 +89,20 @@ If you need to tweak the behavior, check `config.py`.
 - **`NO TELEMETRY`:** Ensure Data Out is ON, IP is `127.0.0.1`, and port matches `5300`.
 - **Hotkeys dead while game is focused:** Ensure the script was launched as an administrator.
 
-## Optional: ViGEm Mode (Smoother Analog Throttle)
-By default, the program simulates keyboard presses for the throttle. If you prefer a completely smooth, analog throttle output, you can use the `vigem` output mode. This mode forwards every controller input through a virtual Xbox 360 pad and blends the right trigger with the cruise control output.
+## Contributing
 
-**Setup for ViGEm Mode:**
+Contributions are welcome. Since this is an initial build, feel free to open issues, suggest improvements, or submit pull requests.
+
+## Output Modes (default: `keyboard`)
+
+The default output mode is `keyboard`, which simulates `W` key throttle input while your controller remains active for normal driving.
+
+If you prefer smoother analog throttle output, you can optionally use `vigem` mode.
+
+**Optional setup for `vigem` mode:**
 1. **Install ViGEmBus Driver:** It's bundled with the `vgamepad` package you installed via pip. You can find the installer inside your Python site-packages directory (e.g., `site-packages\vgamepad\win\vigem\install\x64\ViGEmBusSetup_x64.msi`) and run it.
-2. **Install [HidHide](https://github.com/nefarius/HidHide/releases):** You must hide your physical controller from the game, or your inputs will be doubled. 
+2. **Install [HidHide](https://github.com/nefarius/HidHide/releases):** You must hide your physical controller from the game, or your inputs will be doubled.
    - Open *HidHide Configuration Client*.
    - In the **Devices** tab, check your physical controller and tick *Hide device*.
    - In the **Applications** tab, add `python.exe` so this app can still read the physical controller.
 3. **Run with ViGEm Mode:** Start the app with the flag `--output vigem` or change `OUTPUT_MODE = "vigem"` in `config.py`.
-
-## Contributing
-
-Contributions are welcome. Since this is an initial build, feel free to open issues, suggest improvements, or submit pull requests.
