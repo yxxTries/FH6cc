@@ -4,6 +4,12 @@ A real-car cruise control system for Forza Horizon 6. The program reads your gam
 
 Your controller continues working normally (you can still steer and brake). The cruise control only modulates the throttle via keyboard input, avoiding any input collisions with your controller. It also features a live HUD overlay and optional offline voice commands.
 
+## Safety and Privacy
+
+This project is safe to run in normal use and is designed to work fully offline. It does not inject into the game or read game memory; it only uses FH6's built-in UDP telemetry output plus local keyboard/controller input handling.
+
+This is an initial build, so feedback and improvements are welcome.
+
 ## Requirements
 
 Before you begin, ensure you have the following:
@@ -93,3 +99,7 @@ By default, the program simulates keyboard presses for the throttle. If you pref
    - In the **Devices** tab, check your physical controller and tick *Hide device*.
    - In the **Applications** tab, add `python.exe` so this app can still read the physical controller.
 3. **Run with ViGEm Mode:** Start the app with the flag `--output vigem` or change `OUTPUT_MODE = "vigem"` in `config.py`.
+
+## Contributing
+
+Contributions are welcome. Since this is an initial build, feel free to open issues, suggest improvements, or submit pull requests.
