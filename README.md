@@ -15,10 +15,9 @@ Before you begin, ensure you have the following:
 ## Setup Guide
 
 ### 1. Install Python Dependencies
-Open your terminal or command prompt in the project directory and set up a virtual environment:
+Open your terminal or command prompt in the project directory and install the required dependencies:
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 2. Configure Forza Horizon 6 Telemetry
@@ -35,9 +34,9 @@ If you want to use offline voice commands, download the required ~40 MB Vosk mod
 
 ## Running the Program
 
-Start the script using the virtual environment:
+Start the script:
 ```powershell
-.\.venv\Scripts\python main.py
+python main.py
 ```
 *Note: The app will ask for **administrator rights** via a UAC prompt on launch. Please accept it. Without admin privileges, Windows blocks the simulated `W` key presses and global hotkeys when the game window is in focus.*
 
@@ -83,3 +82,14 @@ If you need to tweak the behavior, check `config.py`.
 - **Slow to reach the set speed uphill:** Raise `PID_KI` slightly.
 - **`NO TELEMETRY`:** Ensure Data Out is ON, IP is `127.0.0.1`, and port matches `5300`.
 - **Hotkeys dead while game is focused:** Ensure the script was launched as an administrator.
+
+## Optional: ViGEm Mode (Smoother Analog Throttle)
+By default, the program simulates keyboard presses for the throttle. If you prefer a completely smooth, analog throttle output, you can use the `vigem` output mode. This mode forwards every controller input through a virtual Xbox 360 pad and blends the right trigger with the cruise control output.
+
+**Setup for ViGEm Mode:**
+1. **Install ViGEmBus Driver:** It's bundled with the `vgamepad` package you installed via pip. You can find the installer inside your Python site-packages directory (e.g., `site-packages\vgamepad\win\vigem\install\x64\ViGEmBusSetup_x64.msi`) and run it.
+2. **Install [HidHide](https://github.com/nefarius/HidHide/releases):** You must hide your physical controller from the game, or your inputs will be doubled. 
+   - Open *HidHide Configuration Client*.
+   - In the **Devices** tab, check your physical controller and tick *Hide device*.
+   - In the **Applications** tab, add `python.exe` so this app can still read the physical controller.
+3. **Run with ViGEm Mode:** Start the app with the flag `--output vigem` or change `OUTPUT_MODE = "vigem"` in `config.py`.
